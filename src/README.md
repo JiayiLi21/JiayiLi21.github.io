@@ -3,9 +3,9 @@ home: true
 layout: BlogHome
 icon: home
 title: Blog Home
-heroImage: /logo.svg
-heroText: The name of your blog
-tagline: You can put your slogan here
+heroImage: /dancer.svg
+heroText: Jiayi Li
+tagline: 
 heroFullScreen: true
 projects:
   - icon: project

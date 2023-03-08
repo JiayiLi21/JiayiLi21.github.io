@@ -2,7 +2,7 @@
 home: true
 layout: BlogHome
 icon: home
-title: Blog Home
+title: Jiayi Li's Blog
 heroImage: /dancer.svg
 heroText: Jiayi Li
 tagline: 

@@ -9,28 +9,28 @@ export const enNavbar = navbar([
     prefix: "/posts/",
     children: [
       {
-        text: "Apple",
+        text: "Algorithm",
         icon: "edit",
-        prefix: "apple/",
+        prefix: "Algorithm/",
         children: [
-          { text: "Apple1", icon: "edit", link: "1" },
-          { text: "Apple2", icon: "edit", link: "2" },
+          { text: "Overview", icon: "edit", link: "1" },
+          { text: "Contents", icon: "edit", link: "2" },
           "3",
           "4",
         ],
       },
       {
-        text: "Banana",
+        text: "Stat",
         icon: "edit",
-        prefix: "banana/",
+        prefix: "Stat/",
         children: [
           {
-            text: "Banana 1",
+            text: "Overview",
             icon: "edit",
             link: "1",
           },
           {
-            text: "Banana 2",
+            text: "Contents",
             icon: "edit",
             link: "2",
           },
@@ -38,8 +38,8 @@ export const enNavbar = navbar([
           "4",
         ],
       },
-      { text: "Cherry", icon: "edit", link: "cherry" },
-      { text: "Dragon Fruit", icon: "edit", link: "dragonfruit" },
+      { text: "ML", icon: "edit", link: "ML" },
+      { text: "DL", icon: "edit", link: "DL" },
       "tomato",
       "strawberry",
     ],

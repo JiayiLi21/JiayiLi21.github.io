@@ -86,27 +86,27 @@ export default hopeTheme({
     /**
      * Chinese locale config
      */
-    "/zh/": {
-      // navbar
-      navbar: zhNavbar,
+    // "/zh/": {
+    //   // navbar
+    //   navbar: zhNavbar,
 
-      // sidebar
-      sidebar: zhSidebar,
+    //   // sidebar
+    //   sidebar: zhSidebar,
 
-      footer: "默认页脚",
+    //   footer: "默认页脚",
 
-      displayFooter: true,
+    //   displayFooter: true,
 
-      blog: {
-        description: "一个前端开发者",
-        intro: "/zh/intro.html",
-      },
+    //   blog: {
+    //     description: "一个前端开发者",
+    //     intro: "/zh/intro.html",
+    //   },
 
-      // page meta
-      metaLocales: {
-        editLink: "在 GitHub 上编辑此页",
-      },
-    },
+    //   // page meta
+    //   metaLocales: {
+    //     editLink: "在 GitHub 上编辑此页",
+    //   },
+    // },
   },
 
   encrypt: {
@@ -119,10 +119,10 @@ export default hopeTheme({
   plugins: {
     blog: true,
 
-    comment: {
-      // @ts-expect-error: You should generate and use your own comment service
-      provider: "Giscus",
-    },
+    // comment: {
+    //   // @ts-expect-error: You should generate and use your own comment service
+    //   provider: "Giscus",
+    // },
 
     // all features are enabled for demo, only preserve features you need here
     mdEnhance: {

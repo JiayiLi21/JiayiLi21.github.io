@@ -4,4 +4,6 @@ icon: info
 
 # Intro Page
 
-Place your introduction and profile here.
+Jiayi Li
+
+I am currently an Undergrad in Biostatistics, with interest in Computational Biology.

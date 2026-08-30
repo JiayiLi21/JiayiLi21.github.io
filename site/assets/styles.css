@@ -129,33 +129,41 @@ a {
   width: 25px;
 }
 
-.brand-loop-domain,
-.brand-track {
+.brand-cell-ring,
+.brand-genomic-ribbon {
   fill: none;
+  stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 2.2;
-  transition: stroke 180ms ease-out, transform 180ms ease-out;
 }
 
-.brand-loop-domain {
-  stroke: currentColor;
-  transform-origin: center bottom;
+.brand-cell-ring {
+  stroke-width: 1.9;
 }
 
-.brand-track {
-  stroke: var(--teal);
+.brand-genomic-ribbon {
+  stroke-width: 2.1;
+}
+
+.brand-locus {
+  fill: var(--teal);
+}
+
+.brand-genomic-ribbon,
+.brand-locus {
+  transform-box: fill-box;
   transform-origin: center;
+  transition: transform 180ms ease-out;
 }
 
-.wordmark:hover .brand-loop-domain,
-.wordmark:focus-visible .brand-loop-domain {
-  transform: scaleY(1.03);
+.wordmark:hover .brand-genomic-ribbon,
+.wordmark:focus-visible .brand-genomic-ribbon {
+  transform: translateX(0.4px);
 }
 
-.wordmark:hover .brand-track,
-.wordmark:focus-visible .brand-track {
-  transform: translateY(0.4px);
+.wordmark:hover .brand-locus,
+.wordmark:focus-visible .brand-locus {
+  transform: scale(1.08);
 }
 
 .wordmark-name {
@@ -748,10 +756,10 @@ h1 {
     transform: none !important;
   }
 
-  .wordmark:hover .brand-loop-domain,
-  .wordmark:focus-visible .brand-loop-domain,
-  .wordmark:hover .brand-track,
-  .wordmark:focus-visible .brand-track {
+  .wordmark:hover .brand-genomic-ribbon,
+  .wordmark:focus-visible .brand-genomic-ribbon,
+  .wordmark:hover .brand-locus,
+  .wordmark:focus-visible .brand-locus {
     transform: none !important;
   }
 

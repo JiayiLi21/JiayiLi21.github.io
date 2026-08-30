@@ -107,51 +107,25 @@ a {
 }
 
 .wordmark {
-  color: var(--text);
+  align-items: center;
+  color: var(--indigo);
   display: inline-flex;
+  font-family: var(--serif);
+  font-size: 23px;
+  font-variant-ligatures: none;
+  font-weight: 600;
   height: 42px;
+  letter-spacing: 0.055em;
+  line-height: 1;
   margin-left: -5px;
-  place-items: center;
+  min-width: 50px;
   text-decoration: none;
-  width: 50px;
+  transition: color 140ms ease;
 }
 
 .wordmark:hover,
 .wordmark:focus-visible {
-  color: var(--indigo);
-}
-
-.monogram {
-  height: 38px;
-  overflow: visible;
-  width: 42px;
-}
-
-.monogram-line {
-  animation: mark-draw 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  stroke: currentColor;
-  stroke-dasharray: 58;
-  stroke-dashoffset: 58;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2.25;
-}
-
-.monogram-l {
-  animation-delay: 60ms;
-}
-
-.monogram-dot {
-  animation: dot-arrive 240ms 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  fill: var(--teal);
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.wordmark:hover .monogram-dot,
-.wordmark:focus-visible .monogram-dot {
-  transform: translateY(-1.5px) scale(1.2);
+  color: var(--teal);
 }
 
 .header-actions,
@@ -515,41 +489,6 @@ h1 {
   font-weight: 560;
 }
 
-.research-meta {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 13px;
-  margin-top: 29px;
-}
-
-.research-meta > p {
-  color: var(--teal);
-  font-size: 9px;
-  font-weight: 650;
-  letter-spacing: 0.13em;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.research-lenses {
-  align-items: center;
-  color: var(--text-faint);
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 11px;
-  gap: 7px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.research-lenses li + li::before {
-  color: var(--teal);
-  content: "·";
-  margin-right: 7px;
-}
-
 .site-footer {
   align-items: center;
   border-top: 1px solid var(--line);
@@ -571,24 +510,6 @@ h1 {
 
   100% {
     transform: translate3d(0.6%, -0.4%, 0) scale(1.018);
-  }
-}
-
-@keyframes mark-draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes dot-arrive {
-  from {
-    opacity: 0;
-    transform: translateY(4px) scale(0.7);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
   }
 }
 
@@ -711,14 +632,6 @@ h1 {
     line-height: 1.72;
   }
 
-  .research-lenses {
-    justify-content: center;
-  }
-
-  .research-meta {
-    justify-content: center;
-  }
-
   .site-footer {
     justify-content: center;
     padding: 18px 22px 22px;
@@ -771,8 +684,6 @@ h1 {
   .profile,
   .introduction,
   .site-footer,
-  .monogram-line,
-  .monogram-dot,
   .site-shell::before,
   .portrait-frame::after {
     animation: none !important;
@@ -780,7 +691,4 @@ h1 {
     transform: none !important;
   }
 
-  .monogram-line {
-    stroke-dashoffset: 0;
-  }
 }

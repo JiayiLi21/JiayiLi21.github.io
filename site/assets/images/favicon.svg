@@ -1,13 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 48">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <style>
-    .line { fill: none; stroke: #2f4953; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
-    .dot { fill: #477472; }
+    .mark { fill: #2f4953; }
     @media (prefers-color-scheme: dark) {
-      .line { stroke: #e2eeeb; }
-      .dot { fill: #8bc0b6; }
+      .mark { fill: #e2eeeb; }
     }
   </style>
-  <path class="line" d="M12 11v16.2c0 8.1 4.2 12.1 10.9 12.1 7.2 0 11.4-4.8 11.4-12.1"/>
-  <path class="line" d="M31.5 8.5v30.8h11.6"/>
-  <circle class="dot" cx="12" cy="6.5" r="2.25"/>
+  <text class="mark" x="32" y="43" font-family="Georgia, 'Times New Roman', serif" font-size="31" font-weight="600" letter-spacing="1.5" text-anchor="middle">JL</text>
 </svg>

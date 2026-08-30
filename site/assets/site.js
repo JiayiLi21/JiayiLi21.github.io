@@ -31,6 +31,7 @@
     navigation.dataset.open = String(open);
     menuToggle.setAttribute("aria-expanded", String(open));
     menuToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+    if (open) navigation.querySelector("a")?.focus();
   });
 
   document.addEventListener("click", (event) => {
@@ -48,10 +49,12 @@
 
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
+    const navigationWasOpen = navigation.dataset.open === "true";
     emailMenu.open = false;
     navigation.dataset.open = "false";
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.setAttribute("aria-label", "Open navigation");
+    if (navigationWasOpen) menuToggle.focus();
   });
 
   year.textContent = String(new Date().getFullYear());

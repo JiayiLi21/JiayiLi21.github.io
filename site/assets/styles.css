@@ -1,15 +1,17 @@
 :root {
   color-scheme: light dark;
   --background: light-dark(#f8f7f3, #151714);
-  --background-raised: light-dark(rgba(253, 252, 248, 0.97), rgba(29, 32, 27, 0.97));
+  --background-raised: light-dark(#fdfcf8, #1d201b);
   --text: light-dark(#252721, #efeee7);
   --text-soft: light-dark(#555951, #bec2b7);
-  --text-faint: light-dark(#898d84, #858a80);
+  --text-faint: light-dark(#6a7067, #9da49a);
   --line: light-dark(rgba(42, 46, 39, 0.13), rgba(232, 235, 226, 0.13));
   --line-strong: light-dark(#cccec6, #454a41);
-  --indigo: light-dark(#343b78, #dfe3ff);
-  --indigo-soft: light-dark(#6a7397, #aeb6dc);
-  --teal: light-dark(#507f7d, #8cbab6);
+  --indigo: light-dark(#2f4953, #e2eeeb);
+  --indigo-soft: light-dark(#657a7e, #afc0bd);
+  --teal: light-dark(#477472, #8bc0b6);
+  --teal-wash: light-dark(rgba(79, 128, 121, 0.09), rgba(83, 145, 135, 0.075));
+  --warm-wash: light-dark(rgba(173, 119, 102, 0.055), rgba(173, 119, 102, 0.035));
   --shadow: light-dark(rgba(31, 35, 29, 0.12), rgba(0, 0, 0, 0.3));
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -33,9 +35,7 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(circle at 18% 46%, light-dark(rgba(75, 137, 135, 0.065), rgba(75, 137, 135, 0.045)), transparent 31%),
-    var(--background);
+  background: var(--background);
   color: var(--text);
   font-family: var(--sans);
   margin: 0;
@@ -70,11 +70,30 @@ a {
 .site-shell {
   display: flex;
   flex-direction: column;
+  isolation: isolate;
   min-height: 100svh;
+  overflow-x: clip;
+  position: relative;
+}
+
+.site-shell::before {
+  animation: ambient-drift 22s ease-in-out infinite alternate;
+  background:
+    radial-gradient(circle at 22% 47%, var(--teal-wash), transparent 28%),
+    radial-gradient(circle at 78% 19%, var(--warm-wash), transparent 24%);
+  content: "";
+  inset: -14%;
+  pointer-events: none;
+  position: fixed;
+  transform: translate3d(-0.6%, 0, 0) scale(1);
+  z-index: -1;
 }
 
 .site-header {
+  animation: settle-in 300ms 20ms cubic-bezier(0.22, 1, 0.36, 1) both;
   border-bottom: 1px solid var(--line);
+  position: relative;
+  z-index: 50;
 }
 
 .header-inner {
@@ -89,17 +108,50 @@ a {
 
 .wordmark {
   color: var(--text);
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  line-height: 1;
+  display: inline-flex;
+  height: 42px;
+  margin-left: -5px;
+  place-items: center;
   text-decoration: none;
+  width: 50px;
 }
 
 .wordmark:hover,
 .wordmark:focus-visible {
   color: var(--indigo);
+}
+
+.monogram {
+  height: 38px;
+  overflow: visible;
+  width: 42px;
+}
+
+.monogram-line {
+  animation: mark-draw 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  stroke: currentColor;
+  stroke-dasharray: 58;
+  stroke-dashoffset: 58;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.25;
+}
+
+.monogram-l {
+  animation-delay: 60ms;
+}
+
+.monogram-dot {
+  animation: dot-arrive 240ms 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  fill: var(--teal);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wordmark:hover .monogram-dot,
+.wordmark:focus-visible .monogram-dot {
+  transform: translateY(-1.5px) scale(1.2);
 }
 
 .header-actions,
@@ -208,9 +260,12 @@ a {
 
 .profile {
   align-items: center;
+  animation: rise-in 460ms 45ms cubic-bezier(0.22, 1, 0.36, 1) both;
   display: flex;
   flex-direction: column;
   min-width: 0;
+  position: relative;
+  z-index: 10;
 }
 
 .portrait-frame {
@@ -218,6 +273,25 @@ a {
   border-radius: 50%;
   box-shadow: 0 18px 42px light-dark(rgba(38, 50, 47, 0.08), rgba(0, 0, 0, 0.14));
   padding: 6px;
+  position: relative;
+  transition: box-shadow 350ms ease, transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.portrait-frame::after {
+  border: 1px solid transparent;
+  border-right-color: var(--teal);
+  border-top-color: var(--teal);
+  border-radius: 50%;
+  content: "";
+  inset: -7px;
+  opacity: 0.38;
+  pointer-events: none;
+  position: absolute;
+  transform: rotate(-18deg);
+}
+
+.portrait-frame:hover {
+  box-shadow: 0 22px 50px light-dark(rgba(38, 50, 47, 0.12), rgba(0, 0, 0, 0.2));
 }
 
 .portrait {
@@ -313,6 +387,10 @@ a {
   z-index: 20;
 }
 
+.email-menu[open] .email-panel {
+  animation: panel-in 140ms ease-out both;
+}
+
 .email-row {
   border-radius: 7px;
   display: grid;
@@ -390,8 +468,11 @@ a {
 }
 
 .introduction {
+  animation: rise-in 500ms 85ms cubic-bezier(0.22, 1, 0.36, 1) both;
   max-width: 590px;
   min-width: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .kicker {
@@ -434,24 +515,39 @@ h1 {
   font-weight: 560;
 }
 
+.research-meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 13px;
+  margin-top: 29px;
+}
+
+.research-meta > p {
+  color: var(--teal);
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.13em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
 .research-lenses {
   align-items: center;
   color: var(--text-faint);
   display: flex;
   flex-wrap: wrap;
-  font-size: 10px;
-  gap: 8px;
-  letter-spacing: 0.07em;
+  font-size: 11px;
+  gap: 7px;
   list-style: none;
-  margin: 30px 0 0;
+  margin: 0;
   padding: 0;
-  text-transform: uppercase;
 }
 
 .research-lenses li + li::before {
   color: var(--teal);
   content: "·";
-  margin-right: 8px;
+  margin-right: 7px;
 }
 
 .site-footer {
@@ -466,6 +562,66 @@ h1 {
   max-width: 1100px;
   padding: 18px 38px 22px;
   width: 100%;
+}
+
+@keyframes ambient-drift {
+  0% {
+    transform: translate3d(-0.6%, 0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(0.6%, -0.4%, 0) scale(1.018);
+  }
+}
+
+@keyframes mark-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dot-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0.68;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes settle-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 760px) {
@@ -501,6 +657,7 @@ h1 {
   }
 
   .primary-nav[data-open="true"] {
+    animation: menu-in 140ms ease-out both;
     display: flex;
   }
 
@@ -558,6 +715,10 @@ h1 {
     justify-content: center;
   }
 
+  .research-meta {
+    justify-content: center;
+  }
+
   .site-footer {
     justify-content: center;
     padding: 18px 22px 22px;
@@ -565,6 +726,22 @@ h1 {
 
   .footer-note {
     display: none;
+  }
+
+  .site-shell::before {
+    animation: none;
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -584,7 +761,26 @@ h1 {
   *,
   *::before,
   *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .site-header,
+  .profile,
+  .introduction,
+  .site-footer,
+  .monogram-line,
+  .monogram-dot,
+  .site-shell::before,
+  .portrait-frame::after {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .monogram-line {
+    stroke-dashoffset: 0;
   }
 }

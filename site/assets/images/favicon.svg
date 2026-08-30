@@ -1,4 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="15" fill="#343b78"/>
-  <text x="32" y="41" fill="#f8f7f3" font-family="Georgia, serif" font-size="29" text-anchor="middle">JL</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 48">
+  <style>
+    .line { fill: none; stroke: #2f4953; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+    .dot { fill: #477472; }
+    @media (prefers-color-scheme: dark) {
+      .line { stroke: #e2eeeb; }
+      .dot { fill: #8bc0b6; }
+    }
+  </style>
+  <path class="line" d="M12 11v16.2c0 8.1 4.2 12.1 10.9 12.1 7.2 0 11.4-4.8 11.4-12.1"/>
+  <path class="line" d="M31.5 8.5v30.8h11.6"/>
+  <circle class="dot" cx="12" cy="6.5" r="2.25"/>
 </svg>

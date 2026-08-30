@@ -110,15 +110,9 @@ a {
   align-items: center;
   color: var(--indigo);
   display: inline-flex;
-  font-family: var(--serif);
-  font-size: 23px;
-  font-variant-ligatures: none;
-  font-weight: 600;
+  gap: 8px;
   height: 42px;
-  letter-spacing: 0.055em;
-  line-height: 1;
   margin-left: -5px;
-  min-width: 50px;
   text-decoration: none;
   transition: color 140ms ease;
 }
@@ -126,6 +120,62 @@ a {
 .wordmark:hover,
 .wordmark:focus-visible {
   color: var(--teal);
+}
+
+.brand-symbol {
+  flex: 0 0 auto;
+  height: 25px;
+  overflow: visible;
+  width: 25px;
+}
+
+.brand-loop-domain,
+.brand-track {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
+  transition: stroke 180ms ease-out, transform 180ms ease-out;
+}
+
+.brand-loop-domain {
+  stroke: currentColor;
+  transform-origin: center bottom;
+}
+
+.brand-track {
+  stroke: var(--teal);
+  transform-origin: center;
+}
+
+.wordmark:hover .brand-loop-domain,
+.wordmark:focus-visible .brand-loop-domain {
+  transform: scaleY(1.03);
+}
+
+.wordmark:hover .brand-track,
+.wordmark:focus-visible .brand-track {
+  transform: translateY(0.4px);
+}
+
+.wordmark-name {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.wordmark-cn {
+  color: var(--text-faint);
+  font-family: "Songti SC", STSong, "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  margin-left: -1px;
+  white-space: nowrap;
 }
 
 .header-actions,
@@ -658,7 +708,14 @@ h1 {
   }
 }
 
+@media (max-width: 480px) {
+  .wordmark-cn {
+    display: none;
+  }
+}
+
 @media (max-width: 370px) {
+
   .email-panel {
     left: -4px;
     min-width: 258px;
@@ -688,6 +745,13 @@ h1 {
   .portrait-frame::after {
     animation: none !important;
     opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .wordmark:hover .brand-loop-domain,
+  .wordmark:focus-visible .brand-loop-domain,
+  .wordmark:hover .brand-track,
+  .wordmark:focus-visible .brand-track {
     transform: none !important;
   }
 

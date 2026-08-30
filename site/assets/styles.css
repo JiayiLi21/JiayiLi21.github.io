@@ -110,9 +110,8 @@ a {
   align-items: center;
   color: var(--indigo);
   display: inline-flex;
-  gap: 8px;
+  gap: 7px;
   height: 42px;
-  margin-left: -5px;
   text-decoration: none;
   transition: color 140ms ease;
 }
@@ -122,55 +121,11 @@ a {
   color: var(--teal);
 }
 
-.brand-symbol {
-  flex: 0 0 auto;
-  height: 25px;
-  overflow: visible;
-  width: 25px;
-}
-
-.brand-cell-ring,
-.brand-genomic-ribbon {
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.brand-cell-ring {
-  stroke-width: 1.9;
-}
-
-.brand-genomic-ribbon {
-  stroke-width: 2.1;
-}
-
-.brand-locus {
-  fill: var(--teal);
-}
-
-.brand-genomic-ribbon,
-.brand-locus {
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: transform 180ms ease-out;
-}
-
-.wordmark:hover .brand-genomic-ribbon,
-.wordmark:focus-visible .brand-genomic-ribbon {
-  transform: translateX(0.4px);
-}
-
-.wordmark:hover .brand-locus,
-.wordmark:focus-visible .brand-locus {
-  transform: scale(1.08);
-}
-
 .wordmark-name {
   font-family: var(--serif);
-  font-size: 16px;
+  font-size: 16.5px;
   font-weight: 600;
-  letter-spacing: 0.005em;
+  letter-spacing: -0.01em;
   line-height: 1;
   white-space: nowrap;
 }
@@ -178,11 +133,11 @@ a {
 .wordmark-cn {
   color: var(--text-faint);
   font-family: "Songti SC", STSong, "Noto Serif CJK SC", "Source Han Serif SC", serif;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   line-height: 1;
-  margin-left: -1px;
+  opacity: 0.62;
   white-space: nowrap;
 }
 
@@ -753,13 +708,6 @@ h1 {
   .portrait-frame::after {
     animation: none !important;
     opacity: 1 !important;
-    transform: none !important;
-  }
-
-  .wordmark:hover .brand-genomic-ribbon,
-  .wordmark:focus-visible .brand-genomic-ribbon,
-  .wordmark:hover .brand-locus,
-  .wordmark:focus-visible .brand-locus {
     transform: none !important;
   }
 

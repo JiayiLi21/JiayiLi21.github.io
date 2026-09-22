@@ -10,9 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: github-pages
@@ -22,9 +20,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,14 +27,20 @@ jobs:
       - name: Validate static root
         run: test -s site/index.html
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload site
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: site
-
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publish static site
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin gh-pages
+          publish_dir="$(mktemp -d)"
+          git worktree add "$publish_dir" gh-pages
+          git -C "$publish_dir" rm -r .
+          cp -R site/. "$publish_dir"/
+          git -C "$publish_dir" add -A
+          if git -C "$publish_dir" diff --cached --quiet; then
+            echo "Published site is already current."
+          else
+            git -C "$publish_dir" commit -m "Deploy homepage from ${GITHUB_SHA}"
+            git -C "$publish_dir" push origin gh-pages
+          fi

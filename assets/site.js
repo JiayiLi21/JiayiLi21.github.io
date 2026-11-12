@@ -60,3 +60,28 @@
   year.textContent = String(new Date().getFullYear());
   syncThemeButton();
 })();
+
+(() => {
+ const dialog = document.querySelector('.figure-dialog');
+ document.querySelectorAll('.figure-open').forEach(button => button.addEventListener('click', () => {
+  dialog.querySelector('img').src = button.dataset.figure;
+  dialog.querySelector('img').alt = button.querySelector('img').alt;
+  dialog.querySelector('p').textContent = button.dataset.caption;
+  dialog.showModal();
+ }));
+ dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
+ dialog.addEventListener('click', e => { if(e.target === dialog && (e.clientX < dialog.getBoundingClientRect().left || e.clientX > dialog.getBoundingClientRect().right || e.clientY < dialog.getBoundingClientRect().top || e.clientY > dialog.getBoundingClientRect().bottom)) dialog.close(); });
+ const links = [...document.querySelectorAll('.primary-nav a[href^="#"]')];
+ links.forEach(a => a.addEventListener('click', () => {
+  document.querySelector('.primary-nav').dataset.open = 'false';
+  const toggle = document.querySelector('.menu-toggle');
+  toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');
+ }));
+ const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {if(entry.isIntersecting) links.forEach(a => {
+   if(a.hash === '#' + entry.target.id) a.setAttribute('aria-current','location');
+   else a.removeAttribute('aria-current');
+  });});
+ },{rootMargin:'-15% 0px -60% 0px',threshold:0});
+ links.forEach(a => {const section=document.querySelector(a.hash);if(section)observer.observe(section);});
+})();

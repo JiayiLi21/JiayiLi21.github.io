@@ -839,3 +839,14 @@ h2{font-size:31px;letter-spacing:-.025em}
 /* Consistent institution avatars, preserving each complete mark. */
 .institution-logo{width:32px;height:32px;object-fit:contain;border-radius:50%;padding:3px;background:var(--background-raised);border:1px solid var(--line);flex-shrink:0}
 .institution-heading{gap:10px;min-height:36px}
+
+/* Complete MIT mark and background-free institution symbols. */
+.institution-logo{padding:0;border:0;background:transparent;border-radius:0;mix-blend-mode:multiply}
+:root[data-theme="dark"] .institution-logo{mix-blend-mode:normal}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .institution-logo{mix-blend-mode:normal}}
+.mit-avatar{display:block;position:relative;width:32px;height:32px;overflow:hidden;border-radius:50%;flex-shrink:0;background:transparent}
+.mit-avatar .mit-reference{display:block;width:44px;height:42.667px;max-width:none;transform:translate(-9.667px,-6.333px);object-fit:fill}
+.education .mit-avatar{order:1}
+.work-list .publication-caption{font-size:10.5px;line-height:1.6;margin:6px 0 0;color:var(--text-faint)}
+.publication-caption a{text-decoration:none}.publication-caption a:hover{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:760px){.education .mit-avatar{order:0}}

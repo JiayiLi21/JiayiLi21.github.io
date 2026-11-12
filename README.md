@@ -1,14 +1,15 @@
 # Jiayi Li academic homepage
 
-The published site lives in `site/` and intentionally has no build-time dependencies.
+The public site lives in `site/` and has no build-time dependencies.
 
-## Structure
+- `site/index.html`: About, selected research, experience, and interests.
+- `site/assets/styles.css`: responsive layout and light/dark appearance.
+- `site/assets/site.js`: navigation, appearance, and email disclosure.
+- `site/assets/images/`: portrait and favicon.
+- `site/assets/logos/`: institutional affiliation marks.
 
-- `site/index.html` — current About homepage and profile content
-- `site/assets/styles.css` — visual tokens, layout, components, and responsive states
-- `site/assets/site.js` — appearance toggle and small interface interactions
-- `site/assets/images/` — portrait and site icon
+Publications link directly to Google Scholar and public papers. Private CVs, manuscripts, preview screenshots, and source notes are not included.
 
-The header currently exposes only the live `About` page. Planned `Research`, `Publications`, and `Fun` modules remain hidden until their content is ready; add each page and activate its navigation link in the same release.
+Pushes to `main` publish `site/` to the `gh-pages` branch using `.github/workflows/deploy-pages.yml`.
 
-The previous VuePress site is preserved in the GitHub branch `archive/vuepress-legacy-2026-08-30`.
+The former VuePress site is preserved in `archive/vuepress-legacy-2026-08-30`.

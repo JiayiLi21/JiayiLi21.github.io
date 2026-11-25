@@ -850,3 +850,7 @@ h2{font-size:31px;letter-spacing:-.025em}
 .work-list .publication-caption{font-size:10.5px;line-height:1.6;margin:6px 0 0;color:var(--text-faint)}
 .publication-caption a{text-decoration:none}.publication-caption a:hover{text-decoration:underline;text-underline-offset:3px}
 @media(max-width:760px){.education .mit-avatar{order:0}}
+
+@media (min-width: 761px) {
+  .research-card > h3 { min-height: 2lh; }
+}
